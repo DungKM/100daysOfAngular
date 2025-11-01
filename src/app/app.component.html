@@ -1,16 +1,35 @@
-<!-- <app-hello *ngIf="user.age >= 18" [name]="user.name"></app-hello>
 
-<div *ngIf="user.age < 18">
-  You are too young to see this content
-</div> -->
-<app-hello *ngIf="user.age >= 18;else under18" [name]="user.name"></app-hello>
+<app-hello  name="{{name}}"></app-hello>
+<p>Start editing to see some magic happen </p>
 
-<ng-template #under18>
-  <div>
-    You are too young to see this content
-  </div>
+<!-- for(let something of users){
+- $implicit: item Implicit Context variable
+- index: Số thứ tự của item hiện tại
+- count: độ dài của array
+- first: true nếu như item đó là item đầu tiên trong array
+- last: true nếu như item đố là item cuối cùng 
+- even: true nếu như item đó là item vị trí chẵn
+- odd: true nếu như item đó là item vị trí lẻ
+} -->
+<ng-container *ngIf="users.length > 0;else noUsers">
+  <ul>
+    <li *ngFor="let u of users; index as idx; count as total; first as isFirst; last as isLast; even as isEven; odd as isOdd">
+      <span>{{u.name}} - {{u.id}} - {{u.phone}}</span>
+      <br>
+      <span>at index {{idx}} out of {{total}}</span>
+      <br>
+      <span *ngIf="isEven">I am even number</span>
+      <br>
+      <span *ngIf="isOdd">I am odd number</span>
+      <br>
+      <span *ngIf="isLast">I am odd number</span>
+      <br>
+      <span *ngIf="isFirst">I am first</span>
+    </li>
+  </ul>
+</ng-container>
+<ng-template #noUsers>
+     No users
 </ng-template>
 
-<button (click)="user.age = user.age - 1">-</button>
-Age: {{user.age}}
-<button (click)="user.age = user.age + 1">+</button>
+<button *ngFor="let tag of tags; last as isLast" [class.margin-rignt]="!isLast">{{tag}}</button>
