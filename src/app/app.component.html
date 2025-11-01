@@ -1,14 +1,16 @@
-{{name}}
-<!-- 1. Interpolation ({{ }})  -->
-<p>{{ user.name }}</p>
-<p>{{ user.age }}</p>
+<!-- <app-hello *ngIf="user.age >= 18" [name]="user.name"></app-hello>
 
-<!-- 2. Property Binding  -->
-<input type="text" [value]="user.name"> 
+<div *ngIf="user.age < 18">
+  You are too young to see this content
+</div> -->
+<app-hello *ngIf="user.age >= 18;else under18" [name]="user.name"></app-hello>
 
-<!-- 3. Event Binding -->
-<button type="button" (click)="handler()">CLick me</button>
-<br>
-<br>
-<!-- 4. Two-way Binding -->
-<input type="text" [(ngModel)]="name">
+<ng-template #under18>
+  <div>
+    You are too young to see this content
+  </div>
+</ng-template>
+
+<button (click)="user.age = user.age - 1">-</button>
+Age: {{user.age}}
+<button (click)="user.age = user.age + 1">+</button>

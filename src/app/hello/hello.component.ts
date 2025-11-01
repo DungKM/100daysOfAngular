@@ -1,7 +1,17 @@
-import { Component } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-hello',
-    template: '<span>Hello component</span>'
+  selector: 'app-hello',
+  templateUrl: './hello.component.html',
+  styleUrls: ['./hello.component.css']
 })
-export class HelloComponent {}
+export class HelloComponent  {
+    @Input() name: string;
+ 
+    ngOnInit() {
+      console.log('Hello init')
+    }
+    ngOnDestroy(){
+      console.log('Hello destroy')
+    }
+}
