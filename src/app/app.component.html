@@ -1,1 +1,14 @@
-<app-hello></app-hello>
+{{name}}
+<!-- 1. Interpolation ({{ }})  -->
+<p>{{ user.name }}</p>
+<p>{{ user.age }}</p>
+
+<!-- 2. Property Binding  -->
+<input type="text" [value]="user.name"> 
+
+<!-- 3. Event Binding -->
+<button type="button" (click)="handler()">CLick me</button>
+<br>
+<br>
+<!-- 4. Two-way Binding -->
+<input type="text" [(ngModel)]="name">
